@@ -1,0 +1,23 @@
+pipeline "Airport Data Pipeline" {
+
+    source "CSV" {
+        url = "https://opendata.rhein-kreis-neuss.de/api/explore/v2.1/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv?lang=en&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B"
+        delimiter = ";"
+    }
+
+    process "Remove Columns" {
+        remove_columns = ["Zeitzone", "DST", "Zeitzonen-Datenbank", "geo_punkt"]
+    }
+
+    
+    sink "SQLite" {
+        database = "airports.sqlite"
+        table = "airports"
+        column_types = {
+            "column1": "BIGINT",
+            "column2": "TEXT",
+            "column3": "FLOAT"
+        }
+    }
+
+}
