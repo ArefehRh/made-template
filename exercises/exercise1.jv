@@ -14,9 +14,14 @@ pipeline "Airport Data Pipeline" {
         database = "airports.sqlite"
         table = "airports"
         column_types = {
-            "column1": "BIGINT",
-            "column2": "TEXT",
-            "column3": "FLOAT"
+          "Lfd. Numm": "BIGINT",
+            "Name des FOrt": "TEXT",
+            "Land": "TEXT",
+            "IATA": "TEXT",
+            "ICAO": "TEXT",
+            "Latitude": "FLOAT",
+            "Longitude": "FLOAT",
+            "Altitude": "BIGINT"
         }
     }
 
